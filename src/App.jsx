@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import "./App.css";
+// import "./App.css";
 
 import authService from "./appwrite/auth";
 import { useDispatch } from "react-redux";
 import { login, logout } from "./store/authSlice";
+import { Header } from "./components";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -29,9 +30,15 @@ function App() {
 
   if (isLoading) return <>Loading....</>;
   return (
-    <>
-      <h1>The Production ready blog app</h1>
-    </>
+    <main className="bg-gray-900 min-h-screen">
+      {/* <h1>The Production ready blog app</h1>
+       */}
+
+      <Header />
+      {/* <Outlet/> */}
+      {/* {<Footer />} */}
+      {/* <Footer /> */}
+    </main>
   );
 }
 
