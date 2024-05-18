@@ -116,6 +116,15 @@ export class Services {
       return false;
     }
   }
+
+  //get file preview
+  getFilePreview(fileId) {
+    try {
+      return this.bucket.getFilePreview(conf.appwriteBucketId, fileId);
+    } catch (error) {
+      console.log("Appwrite :: getFilePreview ::service ::  error", error);
+    }
+  }
 }
 
 const services = new Services();
