@@ -1,6 +1,6 @@
 import { useState } from "react";
 import services from "../appwrite/config";
-import PostCard from "../components";
+import { PostCard } from "../components";
 
 function AllPosts() {
   const [posts, setPosts] = useState([]);

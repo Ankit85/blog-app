@@ -20,13 +20,13 @@ export const Header = () => {
   return (
     <header>
       <Container>
-        <nav>
-          <div className="mr-4">
+        <nav className="flex items-center p-4 justify-between">
+          <div className="mr-4 ">
             <Link to="/">
               <Logo />
             </Link>
           </div>
-          <ul>
+          <ul className="flex justify-end gap-6">
             {navItem.map((item) =>
               item.active ? (
                 <li key={item.name}>

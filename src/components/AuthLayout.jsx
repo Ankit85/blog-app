@@ -18,7 +18,7 @@ function ProtectedLayout({ children, authentication = true }) {
     setIsLoading(false);
   }, [authStatus, authentication, navigate]);
 
-  return isLoading ? <div>Loading...</div> : { children };
+  return isLoading ? <div>Auth Loading...</div> : <>{children}</>;
 }
 
 export default ProtectedLayout;

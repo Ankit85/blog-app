@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import services from "../appwrite/config";
 
-function PostCard({ $id, title, featuredImage }) {
+export default function PostCard({ $id, title, featuredImage }) {
   return (
     <Link to={`/post/${$id}`}>
       <div className="w-20 rounded-lg ">
@@ -13,5 +13,3 @@ function PostCard({ $id, title, featuredImage }) {
     </Link>
   );
 }
-
-export default PostCard;
