@@ -9,14 +9,14 @@ const Input = React.forwardRef(function Input(
   const id = useId();
 
   return (
-    <div className="w-full">
+    <div className="w-full ">
       {label && (
         <label htmlFor={id} className="inline-block mb-1 pl-1">
-          ${label}
+          {label}
         </label>
       )}
       <input
-        className={`inline-block mb-1 pl-1 ${className}`}
+        className={`inline-block mb-1 pl-1 text-black ${className}`}
         type={type}
         id={id}
         ref={ref}

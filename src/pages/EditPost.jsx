@@ -22,7 +22,7 @@ function EditPostPage() {
 
   return (
     <div>
-      <PostForm {...post} />
+      <PostForm post={post} />
     </div>
   );
 }

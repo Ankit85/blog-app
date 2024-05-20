@@ -28,7 +28,7 @@ function Login() {
   };
 
   return (
-    <div>
+    <div className=" w-fit items-center mx-auto">
       <div>
         <span>Don&apos;t have an Account.</span>
         <Button
@@ -46,7 +46,7 @@ function Login() {
           label="Email: "
           type="email"
           placeholder="Enter a Email"
-          {...register("Email", {
+          {...register("email", {
             required: true,
             validate: {
               matchPatern: (value) =>

@@ -53,12 +53,18 @@ export class Services {
 
   //update post
   async updatePost(slug, { title, content, featuredImage, status }) {
+    console.log("update data,", slug, {
+      title,
+      content,
+      featuredImage,
+      status,
+    });
     try {
       return await this.databases.updateDocument(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
         slug,
-        { title, slug, content, featuredImage, status }
+        { title, content, featuredImage, status }
       );
     } catch (error) {
       console.log("Appwrite :: UpdatePost ::service ::  error", error);
@@ -98,8 +104,11 @@ export class Services {
   //create file upload storage
   async uploadFile(file) {
     try {
-      await this.bucket.createFile(conf.appwriteBucketId, ID.unique(), file);
-      return true;
+      return await this.bucket.createFile(
+        conf.appwriteBucketId,
+        ID.unique(),
+        file
+      );
     } catch (error) {
       console.log("Appwrite :: uploadFile ::service ::  error", error);
       return false;

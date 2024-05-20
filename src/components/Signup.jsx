@@ -18,20 +18,27 @@ function Signup() {
     setError("");
     try {
       const userData = await authService.createAccount(data);
+      console.log("SS user Data", userData);
       if (userData) {
         const currentUser = await authService.getCurrentUser();
-        if (currentUser) dispatch(storeLogin(currentUser));
-        navigate("/");
+        console.log("SS current User", currentUser);
+        if (currentUser) {
+          dispatch(storeLogin({ currentUser }));
+          navigate("/");
+        }
       }
     } catch (error) {
-      setError(error);
+      console.log("error sign up", error.message);
+      setError(error.message);
     }
   };
+
+  //1@3@$@%@6@7@8@9
   return (
     <div>
       <div>
         <span> Already have an Account?</span>
-        <Button onclick={() => navigate("/login")}>Sign In</Button>
+        <Button onClick={() => navigate("/login")}>Sign In</Button>
         {error && <p className="text-red-600 my-4 text-center">{error}</p>}
       </div>
 
@@ -48,7 +55,7 @@ function Signup() {
           label="Email: "
           type="email"
           placeholder="Enter a Email"
-          {...register("Email", {
+          {...register("email", {
             required: true,
             validate: {
               matchPatern: (value) =>
@@ -65,6 +72,7 @@ function Signup() {
             required: true,
           })}
         />
+        <Button type="submit">Sign up</Button>
       </form>
     </div>
   );

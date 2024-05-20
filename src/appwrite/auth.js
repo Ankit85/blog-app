@@ -25,7 +25,7 @@ export class AuthService {
 
       if (userAccount) {
         //login newly created user
-        this.loginUser({ email, password });
+        await this.login({ email, password });
       }
       return userAccount;
     } catch (error) {

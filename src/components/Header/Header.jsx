@@ -14,7 +14,7 @@ export const Header = () => {
     { name: "Login", url: "/login", active: !isLoggedIn },
     { name: "Signup", url: "/signup", active: !isLoggedIn },
     { name: "All Posts", url: "/all-posts", active: isLoggedIn },
-    { name: "Add Posts", url: "/add-posts", active: isLoggedIn },
+    { name: "Add Posts", url: "/add-post", active: isLoggedIn },
   ];
 
   return (

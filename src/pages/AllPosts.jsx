@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import services from "../appwrite/config";
 import { PostCard } from "../components";
 
-function AllPosts() {
+function AllPostsPage() {
   const [posts, setPosts] = useState([]);
-  services.getPosts().then((allPosts) => setPosts(allPosts));
+  useEffect(() => {
+    services.getPosts().then((allPosts) => {
+      setPosts(allPosts.documents);
+    });
+  }, []);
   return (
     <div>
       {posts?.map((post) => (
@@ -16,4 +20,4 @@ function AllPosts() {
   );
 }
 
-export default AllPosts;
+export default AllPostsPage;

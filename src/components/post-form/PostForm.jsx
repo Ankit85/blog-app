@@ -18,8 +18,8 @@ export default function PostForm({ post }) {
   const userData = useSelector((state) => state.auth.userData);
   const navigate = useNavigate();
   const submitPost = async (data) => {
-    console.log("Post submitting data", data);
     if (post) {
+      console.log("Post updating data", data);
       //Update Post
       const file = data.image[0]
         ? await services.uploadFile(data.image[0])
@@ -29,7 +29,7 @@ export default function PostForm({ post }) {
       if (file) {
         await services.deleteFile(post.featuredImage);
       }
-
+      console.log("...data", ...data);
       //updating existing post in db
       const dbPost = await services.updatePost(post.$id, {
         ...data,
@@ -38,17 +38,17 @@ export default function PostForm({ post }) {
 
       if (dbPost) navigate(`/post/${dbPost.$id}`);
     } else {
+      console.log("Post creating data", data);
       //uploading file
       const file = data.image[0]
         ? await services.uploadFile(data.image[0])
         : null;
-
       if (file) {
         //adding new post in db
         data.featuredImage = file.$id;
         const dbPost = await services.createPost({
           ...data,
-          userId: userData.$id,
+          userId: userData.user.$id,
         });
 
         if (dbPost) navigate(`/post/${dbPost.$id}`);
@@ -76,7 +76,7 @@ export default function PostForm({ post }) {
   }, [setValue, slugTransformer, watch]);
 
   return (
-    <form onSubmit={handleSubmit(submitPost)}>
+    <form className=" bg-purple-400 flex " onSubmit={handleSubmit(submitPost)}>
       <div className="w-2/3">
         <Input
           label="title"
